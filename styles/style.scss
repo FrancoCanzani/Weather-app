@@ -1,6 +1,7 @@
 @use "partials/reset";
 
 @mixin theme($theme: cards) {
+  line-height: 1.25;
   padding: 0.5rem;
   margin-right: 0.5rem;
   backdrop-filter: blur(0px) saturate(200%);
@@ -14,14 +15,7 @@ $font_family: "Open Sans", sans-serif;
 $primary_color: rgb(235, 249, 255);
 $second_color: #151f49;
 
-.content {
-  padding: 1rem;
-  background: $primary_color;
-  color: $second_color;
-  display: flex;
-  justify-content: flex-start;
-  font-family: $font_family;
-}
+// Header
 
 header {
   height: 10vh;
@@ -123,6 +117,19 @@ header {
   background-color: #76ccff;
 }
 
+// Main content
+
+.content {
+  padding: 1rem;
+  background: $primary_color;
+  color: $second_color;
+  display: flex;
+  justify-content: flex-start;
+  font-family: $font_family;
+}
+
+// General information
+
 .generalInfo {
   @include theme(cards);
 }
@@ -130,7 +137,35 @@ header {
 .topInfo {
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   display: flex;
   align-items: center;
+}
+
+.weatherInfo span {
+  font-weight: bold;
+}
+
+// Air quality div
+
+.airPollution {
+  @include theme(cards);
+}
+
+.components span {
+  font-weight: bold;
+}
+
+// Forecast
+
+.forecast {
+  @include theme(cards);
+
+  h1 {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+  }
 }

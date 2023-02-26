@@ -129,15 +129,6 @@ table {
   border-spacing: 0;
 }
 
-.content {
-  padding: 1rem;
-  background: rgb(235, 249, 255);
-  color: #151f49;
-  display: flex;
-  justify-content: flex-start;
-  font-family: "Open Sans", sans-serif;
-}
-
 header {
   height: 10vh;
   padding: 0.5rem;
@@ -237,7 +228,17 @@ header {
   background-color: #76ccff;
 }
 
+.content {
+  padding: 1rem;
+  background: rgb(235, 249, 255);
+  color: #151f49;
+  display: flex;
+  justify-content: flex-start;
+  font-family: "Open Sans", sans-serif;
+}
+
 .generalInfo {
+  line-height: 1.25;
   padding: 0.5rem;
   margin-right: 0.5rem;
   backdrop-filter: blur(0px) saturate(200%);
@@ -250,7 +251,44 @@ header {
 .topInfo {
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.weatherInfo span {
+  font-weight: bold;
+}
+
+.airPollution {
+  line-height: 1.25;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  backdrop-filter: blur(0px) saturate(200%);
+  -webkit-backdrop-filter: blur(0px) saturate(200%);
+  background-color: rgba(255, 255, 255, 0.87);
+  border-radius: 3px;
+  border: 3px solid rgb(0, 54, 90);
+}
+
+.components span {
+  font-weight: bold;
+}
+
+.forecast {
+  line-height: 1.25;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  backdrop-filter: blur(0px) saturate(200%);
+  -webkit-backdrop-filter: blur(0px) saturate(200%);
+  background-color: rgba(255, 255, 255, 0.87);
+  border-radius: 3px;
+  border: 3px solid rgb(0, 54, 90);
+}
+.forecast h1 {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.5rem;
   display: flex;
   align-items: center;
 }/*# sourceMappingURL=style.css.map */
