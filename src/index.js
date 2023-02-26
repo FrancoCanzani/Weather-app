@@ -1,8 +1,11 @@
 import styles from "../styles/style.css";
 
-const card = document.querySelector(".card");
+const weatherInfo = document.querySelector(".weatherInfo");
+const topInfo = document.querySelector(".topInfo");
 
-let cityName = "Bariloche, AR";
+const searchButton = document.querySelector(".search");
+
+let cityName = "London, GB";
 
 async function fetchData() {
   try {
@@ -26,16 +29,38 @@ async function fetchData() {
 }
 
 function keyData(data) {
-  return [
-    `City: ${data.name}, ${data.sys.country}`,
-    `Temperature: ${data.main.temp}`,
-    `Feels like: ${data.main.feels_like}`,
-    `Humidity: ${data.main.humidity}`,
-    `Pressure: ${data.main.pressure}`,
-    `Wind speed: ${data.wind.speed}`,
-  ];
+  const weatherData = {
+    feels_like: `Feels like: ${data.main.feels_like}°`,
+    cloud: `Cloud cover: ${data.clouds.all}%`,
+    humidity: `Humidity: ${data.main.humidity}%`,
+    pressure: `Pressure: ${data.main.pressure} Milibars`,
+    wind_speed: `Wind speed: ${data.wind.speed} KM/h`,
+  };
+  return Object.values(weatherData).join("\n");
 }
 
-fetchData().then((data) => {
-  card.innerText = keyData(data);
+function showData() {
+  fetchData().then((data) => {
+    console.log(data);
+    topInfo.innerHTML = `${data.name}, ${data.sys.country} | ${Math.round(
+      data.main.temp
+    )}° | `;
+    const weatherIcon = document.createElement("img");
+    weatherIcon.src = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+    topInfo.appendChild(weatherIcon);
+    weatherInfo.innerText = keyData(data);
+  });
+}
+
+showData();
+
+function handleSearch() {
+  const searchInput = document.querySelector(".searchInput");
+  cityName = searchInput.value;
+  searchInput.value = "";
+}
+
+searchButton.addEventListener("click", function () {
+  handleSearch();
+  showData();
 });
