@@ -1,4 +1,5 @@
 @use "partials/reset";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
 @mixin theme($theme: cards) {
   line-height: 1.25;
@@ -8,12 +9,16 @@
   -webkit-backdrop-filter: blur(0px) saturate(200%);
   background-color: rgba(255, 255, 255, 0.87);
   border-radius: 3px;
-  border: 3px solid rgb(0, 54, 90);
+  border: 3px solid rgb(0, 32, 53);
 }
 
 $font_family: "Open Sans", sans-serif;
-$primary_color: rgb(235, 249, 255);
+$primary_color: #f8f9fa;
 $second_color: #151f49;
+
+body {
+  font-family: $font_family;
+}
 
 // Header
 
@@ -125,7 +130,7 @@ header {
   color: $second_color;
   display: flex;
   justify-content: flex-start;
-  font-family: $font_family;
+  flex-wrap: wrap;
 }
 
 // General information
@@ -135,11 +140,13 @@ header {
 }
 
 .topInfo {
+  height: 25%;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 1.5rem;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .weatherInfo span {
@@ -150,6 +157,17 @@ header {
 
 .airPollution {
   @include theme(cards);
+}
+
+.components {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .leftComponents,
+  .rightComponents {
+    margin: 0.5rem;
+  }
 }
 
 .components span {
@@ -167,5 +185,34 @@ header {
     font-size: 1.5rem;
     display: flex;
     align-items: center;
+  }
+
+  .forecastInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .forecastDay {
+    margin: 10px;
+    padding: 5px;
+  }
+
+  .forecastDate {
+    font-weight: bolder;
+    font-size: 1.2rem;
+  }
+
+  .forecastData {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bolder;
+
+    img {
+      width: 45%;
+      height: 45%;
+    }
   }
 }

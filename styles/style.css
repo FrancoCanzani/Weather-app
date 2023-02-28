@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 html,
 body,
 div,
@@ -129,6 +130,10 @@ table {
   border-spacing: 0;
 }
 
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
 header {
   height: 10vh;
   padding: 0.5rem;
@@ -230,11 +235,11 @@ header {
 
 .content {
   padding: 1rem;
-  background: rgb(235, 249, 255);
+  background: #f8f9fa;
   color: #151f49;
   display: flex;
   justify-content: flex-start;
-  font-family: "Open Sans", sans-serif;
+  flex-wrap: wrap;
 }
 
 .generalInfo {
@@ -245,15 +250,17 @@ header {
   -webkit-backdrop-filter: blur(0px) saturate(200%);
   background-color: rgba(255, 255, 255, 0.87);
   border-radius: 3px;
-  border: 3px solid rgb(0, 54, 90);
+  border: 3px solid rgb(0, 32, 53);
 }
 
 .topInfo {
+  height: 25%;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 1.5rem;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .weatherInfo span {
@@ -268,7 +275,17 @@ header {
   -webkit-backdrop-filter: blur(0px) saturate(200%);
   background-color: rgba(255, 255, 255, 0.87);
   border-radius: 3px;
-  border: 3px solid rgb(0, 54, 90);
+  border: 3px solid rgb(0, 32, 53);
+}
+
+.components {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.components .leftComponents,
+.components .rightComponents {
+  margin: 0.5rem;
 }
 
 .components span {
@@ -283,7 +300,7 @@ header {
   -webkit-backdrop-filter: blur(0px) saturate(200%);
   background-color: rgba(255, 255, 255, 0.87);
   border-radius: 3px;
-  border: 3px solid rgb(0, 54, 90);
+  border: 3px solid rgb(0, 32, 53);
 }
 .forecast h1 {
   text-transform: uppercase;
@@ -291,4 +308,28 @@ header {
   font-size: 1.5rem;
   display: flex;
   align-items: center;
+}
+.forecast .forecastInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.forecast .forecastDay {
+  margin: 10px;
+  padding: 5px;
+}
+.forecast .forecastDate {
+  font-weight: bolder;
+  font-size: 1.2rem;
+}
+.forecast .forecastData {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+.forecast .forecastData img {
+  width: 45%;
+  height: 45%;
 }/*# sourceMappingURL=style.css.map */

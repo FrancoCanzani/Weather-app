@@ -1,5 +1,6 @@
 import styles from "../styles/style.css";
 import { displayAirQuality } from "./airQuality.js";
+import { getForecast } from "./forecast";
 
 const weatherInfo = document.querySelector(".weatherInfo");
 const topInfo = document.querySelector(".topInfo");
@@ -24,25 +25,34 @@ async function fetchData() {
     const response2 = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}&units=metric`
     );
-    const data2 = await response2.json();
-    data.push(data2);
+    const currentWeather = await response2.json();
+    data.push(currentWeather);
 
     const response3 = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${key}`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${key}&units=metric`
     );
-    const data3 = await response3.json();
-    data.push(data3);
+    const forecast = await response3.json();
+    data.push(forecast);
 
     const response4 =
       await fetch(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${key}
     `);
-    const data4 = await response4.json();
-    data.push(data4);
+    const airPollution = await response4.json();
+    data.push(airPollution);
 
     return data;
   } catch (error) {
     console.error(error);
   }
+}
+
+function actualWeather(data) {
+  topInfo.innerHTML = `${data[0].name}, ${data[0].sys.country} | ${Math.round(
+    data[0].main.temp
+  )}° | `;
+  const weatherIcon = document.createElement("img");
+  weatherIcon.src = `http://openweathermap.org/img/w/${data[0].weather[0].icon}.png`;
+  topInfo.appendChild(weatherIcon);
 }
 
 function generalInfo(data) {
@@ -61,21 +71,13 @@ function generalInfo(data) {
   return Object.values(weatherData).join("\n");
 }
 
-function showWeatherIcon(data) {
-  const weatherIcon = document.createElement("img");
-  weatherIcon.src = `http://openweathermap.org/img/w/${data[0].weather[0].icon}.png`;
-  topInfo.appendChild(weatherIcon);
-}
-
 function showData() {
   fetchData().then((data) => {
     console.log(data);
-    topInfo.innerHTML = `${data[0].name}, ${data[0].sys.country} | ${Math.round(
-      data[0].main.temp
-    )}° | `;
-    showWeatherIcon(data);
+    actualWeather(data);
     displayAirQuality(data);
     weatherInfo.innerHTML = generalInfo(data);
+    getForecast(data);
   });
 }
 
