@@ -234,8 +234,63 @@ header {
 }
 
 .content {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+.lds-ripple {
+  display: none;
+  position: relative;
+  margin: 0 auto;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid #ff7300;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+
+@keyframes lds-ripple {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  4.9% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  5% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
+}
+.weather {
   padding: 1rem;
-  background: #f8f9fa;
+  background: #a3cef1;
   color: #151f49;
   display: flex;
   justify-content: flex-start;
@@ -251,6 +306,7 @@ header {
   background-color: rgba(255, 255, 255, 0.87);
   border-radius: 3px;
   border: 3px solid rgb(0, 32, 53);
+  margin-bottom: 1rem;
 }
 
 .topInfo {
@@ -276,6 +332,7 @@ header {
   background-color: rgba(255, 255, 255, 0.87);
   border-radius: 3px;
   border: 3px solid rgb(0, 32, 53);
+  margin-bottom: 1rem;
 }
 
 .components {
@@ -313,6 +370,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 .forecast .forecastDay {
   margin: 10px;
@@ -332,4 +390,8 @@ header {
 .forecast .forecastData img {
   width: 45%;
   height: 45%;
+}
+
+.news {
+  background: #f8f9fa;
 }/*# sourceMappingURL=style.css.map */

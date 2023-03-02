@@ -1,17 +1,21 @@
 import styles from "../styles/style.css";
 import { displayAirQuality } from "./airQuality.js";
 import { getForecast } from "./forecast";
+import { getNews } from "./news";
 
 const weatherInfo = document.querySelector(".weatherInfo");
 const topInfo = document.querySelector(".topInfo");
 const key = "629531abca22eb8266b74fa0de195aec";
 
 const searchButton = document.querySelector(".search");
+const loader = document.querySelector(".lds-ripple");
 
 let cityName = "London, GB";
 
 async function fetchData() {
   const data = [];
+
+  loader.style.display = "block";
 
   try {
     const response1 = await fetch(
@@ -21,6 +25,7 @@ async function fetchData() {
 
     const latitude = data1[0].lat;
     const longitude = data1[0].lon;
+    const country = data1[0].country;
 
     const response2 = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}&units=metric`
@@ -39,6 +44,14 @@ async function fetchData() {
     `);
     const airPollution = await response4.json();
     data.push(airPollution);
+
+    const response5 = await fetch(
+      `https://newsdata.io/api/1/news?apikey=pub_181676ee5721562b81df48d143874f564e726&country=${country}`
+    );
+    const news = await response5.json();
+    data.push(news);
+
+    loader.style.display = "none";
 
     return data;
   } catch (error) {
@@ -78,6 +91,7 @@ function showData() {
     displayAirQuality(data);
     weatherInfo.innerHTML = generalInfo(data);
     getForecast(data);
+    getNews(data);
   });
 }
 
