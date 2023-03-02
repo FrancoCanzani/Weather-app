@@ -66,16 +66,30 @@
         My location
       </button>
     </header>
+
     <div class="content">
-      <div class="generalInfo">
-        <div class="topInfo"></div>
-        <div class="weatherInfo"></div>
+      <div class="weather">
+        <div class="lds-ripple">
+          <div></div>
+          <div></div>
+        </div>
+
+        <div class="generalInfo">
+          <div class="topInfo"></div>
+          <div class="weatherInfo"></div>
+        </div>
+
+        <div class="airPollution"></div>
+
+        <div id="map"></div>
+
+        <div class="forecast">
+          <div class="topInfo">24HS Forecast</div>
+          <div class="forecastInfo"></div>
+        </div>
       </div>
-      <div class="airPollution"></div>
-      <div class="forecast">
-        <div class="topInfo">24HS Forecast</div>
-        <div class="forecastInfo"></div>
-      </div>
+
+      <div class="news"></div>
     </div>
 
     <script src="main.js"></script>
