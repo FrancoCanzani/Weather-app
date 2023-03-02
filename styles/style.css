@@ -394,4 +394,37 @@ header {
 
 .news {
   background: #f8f9fa;
+  padding: 1rem;
+}
+.news .newsContainer {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgb(188, 188, 188);
+}
+.news .sectionTitle {
+  font-weight: bolder;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid black;
+}
+.news .newsTitle {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: black;
+}
+.news .newsTitle:hover {
+  text-decoration: underline;
+}
+.news .newsCategory {
+  text-transform: capitalize;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+  font-style: italic;
+  font-weight: bolder;
+}
+.news .newsDate {
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  color: rgb(84, 84, 84);
 }/*# sourceMappingURL=style.css.map */

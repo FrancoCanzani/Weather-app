@@ -281,4 +281,43 @@ header {
 
 .news {
   background: $primary_color;
+  padding: 1rem;
+
+  .newsContainer {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgb(188, 188, 188);
+  }
+
+  .sectionTitle {
+    font-weight: bolder;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid black;
+  }
+
+  .newsTitle {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: black;
+  }
+
+  .newsTitle:hover {
+    text-decoration: underline;
+  }
+
+  .newsCategory {
+    text-transform: capitalize;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    font-style: italic;
+    font-weight: bolder;
+  }
+
+  .newsDate {
+    margin-top: 0.3rem;
+    font-size: 0.8rem;
+    color: rgb(84, 84, 84);
+  }
 }
