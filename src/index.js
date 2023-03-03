@@ -2,6 +2,7 @@ import styles from "../styles/style.css";
 import { displayAirQuality } from "./airQuality.js";
 import { getForecast } from "./forecast";
 import { getNews } from "./news";
+import { generalInfo } from "./generalInfo";
 
 const weatherInfo = document.querySelector(".weatherInfo");
 const topInfo = document.querySelector(".topInfo");
@@ -55,7 +56,10 @@ async function fetchData() {
 
     return data;
   } catch (error) {
+    loader.style.display = "none";
     console.error(error);
+    // Handle error gracefully and alert the user
+    alert("Something went wrong. Please try again later.");
   }
 }
 
@@ -66,22 +70,6 @@ function actualWeather(data) {
   const weatherIcon = document.createElement("img");
   weatherIcon.src = `http://openweathermap.org/img/w/${data[0].weather[0].icon}.png`;
   topInfo.appendChild(weatherIcon);
-}
-
-function generalInfo(data) {
-  const weatherData = {
-    feels_like: `<p>Feels like: <span>${Math.round(
-      data[0].main.feels_like
-    )}°</span></p>`,
-    cloud: `<p>Cloud cover: <span>${data[0].clouds.all}%</span></p>`,
-    humidity: `<p>Humidity: <span>${data[0].main.humidity}%</span></p>`,
-    pressure: `<p>Pressure: <span>${data[0].main.pressure} Milibars</span></p>`,
-    wind_speed: `<p>Wind speed: <span>${data[0].wind.speed} KM/h</span></p>`,
-    visibility: `<p>Visibility: <span>${
-      data[0].visibility / 1000
-    } KM</span></p>`,
-  };
-  return Object.values(weatherData).join("\n");
 }
 
 function showData() {
