@@ -3,17 +3,34 @@ import { displayAirQuality } from "./airQuality.js";
 import { getForecast } from "./forecast";
 import { getNews } from "./news";
 import { generalInfo } from "./generalInfo";
+import { data } from "browserslist";
 
 const weatherInfo = document.querySelector(".weatherInfo");
-const topInfo = document.querySelector(".topInfo");
+const locationWeather = document.querySelector(".locationWeather");
 const key = "629531abca22eb8266b74fa0de195aec";
+const ipToken = "2a032ca2831336";
 
 const searchButton = document.querySelector(".search");
 const loader = document.querySelector(".lds-ripple");
 
 let cityName = "London, GB";
 
-async function fetchData() {
+async function userLocation() {
+  return fetch(`https://ipinfo.io/json?token=${ipToken}`)
+    .then((response) => response.json())
+    .then((data) => {
+      const location = data.loc.split(",");
+      const lat = location[0];
+      const long = location[1];
+
+      return { lat, long };
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
+async function fetchData(latitude, longitude) {
   const data = [];
 
   loader.style.display = "block";
@@ -24,8 +41,6 @@ async function fetchData() {
     );
     const data1 = await response1.json();
 
-    const latitude = data1[0].lat;
-    const longitude = data1[0].lon;
     const country = data1[0].country;
 
     const response2 = await fetch(
@@ -41,7 +56,7 @@ async function fetchData() {
     data.push(forecast);
 
     const response4 =
-      await fetch(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${key}
+      await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${key}
     `);
     const airPollution = await response4.json();
     data.push(airPollution);
@@ -51,6 +66,12 @@ async function fetchData() {
     );
     const news = await response5.json();
     data.push(news);
+
+    const response6 = await fetch(
+      `https://restcountries.com/v3.1/name/${country}`
+    );
+    const countryInfo = await response6.json();
+    data.push(countryInfo);
 
     loader.style.display = "none";
 
@@ -64,34 +85,64 @@ async function fetchData() {
 }
 
 function actualWeather(data) {
-  topInfo.innerHTML = `${data[0].name}, ${data[0].sys.country} | ${Math.round(
-    data[0].main.temp
-  )}° | `;
+  locationWeather.innerHTML = `${data[0].name}, ${
+    data[0].sys.country
+  } | ${Math.round(data[0].main.temp)}° | `;
   const weatherIcon = document.createElement("img");
   weatherIcon.src = `http://openweathermap.org/img/w/${data[0].weather[0].icon}.png`;
-  topInfo.appendChild(weatherIcon);
+  locationWeather.appendChild(weatherIcon);
 }
 
 function showData() {
-  fetchData().then((data) => {
-    console.log(data);
-    actualWeather(data);
-    displayAirQuality(data);
-    weatherInfo.innerHTML = generalInfo(data);
-    getForecast(data);
-    getNews(data);
+  userLocation().then((location) => {
+    fetchData(location.lat, location.long).then((data) => {
+      console.log(data);
+      actualWeather(data);
+      displayAirQuality(data);
+      weatherInfo.innerHTML = generalInfo(data);
+      getForecast(data);
+      getNews(data);
+    });
   });
 }
 
 showData();
 
-function handleSearch() {
+async function handleSearch() {
   const searchInput = document.querySelector(".searchInput");
-  cityName = searchInput.value;
+  const searchedCity = searchInput.value;
   searchInput.value = "";
+
+  try {
+    const response = await fetch(
+      `https://api.openweathermap.org/geo/1.0/direct?q=${searchedCity}&limit=1&appid=${key}`
+    );
+    const data = await response.json();
+
+    if (data.length === 0) {
+      throw new Error("City not found.");
+    }
+
+    cityName = `${data[0].name}, ${data[0].country}`;
+    const { lat, lon } = data[0];
+
+    fetchData(lat, lon).then((data) => {
+      actualWeather(data);
+      displayAirQuality(data);
+      weatherInfo.innerHTML = generalInfo(data);
+      getForecast(data);
+      getNews(data);
+    });
+  } catch (error) {
+    console.error(error);
+    // Handle error gracefully and alert the user
+    alert("City not found. Please try again.");
+  }
 }
 
 searchButton.addEventListener("click", function () {
   handleSearch();
-  showData();
 });
+
+// Update the location and weather data every 5 minutes
+setInterval(showData, 300000);

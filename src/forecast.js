@@ -1,8 +1,10 @@
 const forecastInfo = document.querySelector(".forecastInfo");
+const forecastTitle = document.querySelector(".forecastTitle");
 
 function getForecast(data) {
   forecastInfo.innerHTML = "";
-  for (let index = 0; index < 5; index++) {
+  forecastTitle.innerHTML = `<h1>Forecast</h1>`;
+  for (let index = 0; index < 3; index++) {
     const forecastDay = document.createElement("div");
     const forecastDate = document.createElement("div");
     const forecastData = document.createElement("div");

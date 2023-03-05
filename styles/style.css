@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
 html,
 body,
 div,
@@ -130,16 +130,29 @@ table {
   border-spacing: 0;
 }
 
-body {
-  font-family: "Open Sans", sans-serif;
-}
-
 header {
-  height: 10vh;
+  height: 7vh;
   padding: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.locationWeather {
+  height: 25%;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: helvetica, sans-serif;
+  color: black;
+  font-weight: bolder;
+  position: absolute;
+  left: 0;
+  margin-left: 1.3rem;
 }
 
 .searchBar {
@@ -236,6 +249,7 @@ header {
 .content {
   display: grid;
   grid-template-columns: 3fr 1fr;
+  font-family: helvetica, sans-serif;
 }
 
 .lds-ripple {
@@ -291,10 +305,11 @@ header {
 .weather {
   padding: 1rem;
   background: #a3cef1;
-  color: #151f49;
+  color: black;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  position: relative;
 }
 
 .generalInfo {
@@ -304,19 +319,32 @@ header {
   backdrop-filter: blur(0px) saturate(200%);
   -webkit-backdrop-filter: blur(0px) saturate(200%);
   background-color: rgba(255, 255, 255, 0.87);
-  border-radius: 3px;
-  border: 3px solid rgb(0, 32, 53);
+  border-radius: 5px;
+  border: 1px solid grey;
   margin-bottom: 1rem;
+}
+
+.actualWeather {
+  font-size: 2rem;
+  font-size: bolder;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+.actualWeather img {
+  width: 30%;
+  height: 30%;
 }
 
 .topInfo {
   height: 25%;
   text-transform: uppercase;
-  font-weight: bold;
-  font-size: 1.5rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  font-family: helvetica, sans-serif;
 }
 
 .weatherInfo span {
@@ -330,8 +358,8 @@ header {
   backdrop-filter: blur(0px) saturate(200%);
   -webkit-backdrop-filter: blur(0px) saturate(200%);
   background-color: rgba(255, 255, 255, 0.87);
-  border-radius: 3px;
-  border: 3px solid rgb(0, 32, 53);
+  border-radius: 5px;
+  border: 1px solid grey;
   margin-bottom: 1rem;
 }
 
@@ -356,15 +384,8 @@ header {
   backdrop-filter: blur(0px) saturate(200%);
   -webkit-backdrop-filter: blur(0px) saturate(200%);
   background-color: rgba(255, 255, 255, 0.87);
-  border-radius: 3px;
-  border: 3px solid rgb(0, 32, 53);
-}
-.forecast h1 {
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
+  border-radius: 5px;
+  border: 1px solid grey;
 }
 .forecast .forecastInfo {
   display: flex;
@@ -388,8 +409,28 @@ header {
   font-weight: bolder;
 }
 .forecast .forecastData img {
-  width: 45%;
-  height: 45%;
+  width: 50%;
+  height: 50%;
+}
+.forecast .forecastTitle {
+  height: 25%;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: helvetica, sans-serif;
+}
+
+.countryInfo {
+  line-height: 1.25;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  backdrop-filter: blur(0px) saturate(200%);
+  -webkit-backdrop-filter: blur(0px) saturate(200%);
+  background-color: rgba(255, 255, 255, 0.87);
+  border-radius: 5px;
+  border: 1px solid grey;
+  width: 100%;
 }
 
 .news {

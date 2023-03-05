@@ -36,6 +36,7 @@ function getNews(data) {
 
     newsTitle.innerText = data[3].results[index].title;
     newsTitle.href = data[3].results[index].link;
+    newsTitle.setAttribute("target", "_blank");
     newsCategory.innerHTML = data[3].results[index].category[0];
     // newsDescription.innerText = data[3].results[index].description;
     news__date.innerText = newsDate(data[3].results[index].pubDate);
