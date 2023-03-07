@@ -9,7 +9,6 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
     assetModuleFilename: "[name][ext]",
-    publicPath: "/",
   },
   devtool: "source-map",
   devServer: {

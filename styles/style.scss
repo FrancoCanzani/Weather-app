@@ -3,18 +3,23 @@
 
 @mixin theme($theme: cards) {
   line-height: 1.25;
-  padding: 0.5rem;
-  margin-right: 0.5rem;
-  backdrop-filter: blur(0px) saturate(200%);
-  -webkit-backdrop-filter: blur(0px) saturate(200%);
+  padding: 2rem;
+  margin-right: 1rem;
   background-color: rgba(255, 255, 255, 0.87);
-  border-radius: 5px;
-  border: 1px solid grey;
+  border-radius: 10px;
+  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4),
+    0 0 2px #00b9f133, inset 0 0 2px rgba(212, 127, 0, 0.1),
+    inset 0 0 2px rgba(0, 149, 255, 0.2);
 }
 
 $primary_font: helvetica, sans-serif;
 $primary_color: #f8f9fa;
 $second_color: black;
+
+#map {
+  height: 400px;
+  width: 400px;
+}
 
 // Header
 
@@ -110,31 +115,6 @@ header {
   fill: #76ccff;
 }
 
-.location {
-  background-color: #dcf2ff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  padding: 10px 10px;
-  border-radius: 10px;
-  cursor: pointer;
-  text-transform: uppercase;
-  font-weight: bold;
-
-  svg {
-    margin-right: 0.1rem;
-  }
-}
-
-.location:hover {
-  background-color: #a9dfff;
-}
-
-.location:active {
-  background-color: #76ccff;
-}
-
 // Main content
 
 .content {
@@ -200,7 +180,7 @@ header {
 
 .weather {
   padding: 1rem;
-  background: #a3cef1;
+  background: #eff8ff;
   color: $second_color;
   display: flex;
   justify-content: flex-start;
@@ -208,35 +188,37 @@ header {
   position: relative;
 }
 
-// General information
+.title {
+  text-transform: uppercase;
+  font-weight: bold;
+}
 
-.generalInfo {
+// Current weather
+
+.currentWeather {
   @include theme(cards);
   margin-bottom: 1rem;
 }
 
-.actualWeather {
-  font-size: 2rem;
-  font-size: bolder;
+.topInfo {
+  margin: 1rem 1rem 0 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
   font-style: italic;
-
-  img {
-    width: 30%;
-    height: 30%;
-  }
 }
 
-.topInfo {
-  height: 25%;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  font-family: $primary_font;
+.weatherDescription {
+  text-transform: capitalize;
+  text-align: center;
+  font-weight: 500;
+  font-style: oblique;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px dashed black;
 }
 
 .weatherInfo span {
