@@ -1,4 +1,4 @@
-function generalInfo(data) {
+function currentWeather(data) {
   // Convert Unix timestamp values for sunrise and sunset
   const sunriseDate = new Date(data[0].sys.sunrise * 1000);
   const sunsetDate = new Date(data[0].sys.sunset * 1000);
@@ -26,4 +26,4 @@ function generalInfo(data) {
   return Object.values(weatherData).join("\n");
 }
 
-export { generalInfo };
+export { currentWeather };
