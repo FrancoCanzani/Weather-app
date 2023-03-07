@@ -2,47 +2,19 @@ import styles from "../styles/style.css";
 import { displayAirQuality } from "./airQuality.js";
 import { getForecast } from "./forecast";
 import { getNews } from "./news";
-import { generalInfo } from "./generalInfo";
-import { data } from "browserslist";
+import { currentWeather } from "./currentWeather";
 
 const weatherInfo = document.querySelector(".weatherInfo");
-const locationWeather = document.querySelector(".locationWeather");
-const ipToken = "2a032ca2831336";
+const topInfo = document.querySelector(".topInfo");
 const key = "629531abca22eb8266b74fa0de195aec";
-const ipToken = "2a032ca2831336";
 
 const searchButton = document.querySelector(".search");
 const loader = document.querySelector(".lds-ripple");
+const weatherDescription = document.querySelector(".weatherDescription");
 
-  return fetch(`https://ipinfo.io/json?token=${ipToken}`)
-  return fetch(`https://ipinfo.io/json?token=${ipToken}`)
-    .then((response) => response.json())
-    .then((data) => {
-      const lat = location[0];
-      const long = location[1];
+let cityName = "London, GB";
 
-      return { lat, long };
-      const long = location[1];
-
-      return { lat, long };
-    })
-    .catch((error) => {
-      console.error(error);
-async function fetchData(latitude, longitude) {
-}
-
-async function fetchData(latitude, longitude) {
-
-async function userLocation() {
-  return fetch(`https://ipinfo.io/json?token=${ipToken}`)
-      `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${key}`
-    .then((data) => {
-      const location = data.loc.split(",");
-      const lat = location[0];
-    });
-}
-
-async function fetchData(latitude, longitude) {
+async function fetchData() {
   const data = [];
 
   loader.style.display = "block";
@@ -52,17 +24,25 @@ async function fetchData(latitude, longitude) {
       `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${key}`
     );
     const data1 = await response1.json();
-      await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${key}
-      await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${key}
+
+    const latitude = data1[0].lat;
+    const longitude = data1[0].lon;
+    const country = data1[0].country;
 
     const response2 = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}&units=metric`
     );
-      `https://restcountries.com/v3.1/alpha/${data1[0].country}`
+    const currentWeather = await response2.json();
     data.push(currentWeather);
-    const countryInfo = await response5.json();
+
+    const response3 = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${key}&units=metric`
+    );
+    const forecast = await response3.json();
+    data.push(forecast);
+
     const response4 =
-      await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${key}
+      await fetch(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${key}
     `);
     const airPollution = await response4.json();
     data.push(airPollution);
@@ -73,140 +53,93 @@ async function fetchData(latitude, longitude) {
     const news = await response5.json();
     data.push(news);
 
-    const response6 = await fetch(
-function showData() {
-  userLocation().then((location) => {
-    fetchData(location.lat, location.long).then((data) => {
-      console.log(data);
-      actualWeather(data);
-      displayAirQuality(data);
-      weatherInfo.innerHTML = generalInfo(data);
-      getForecast(data);
-      getNews(data);
-    });
-  });
-}
-
-showData();
-
-      `https://restcountries.com/v3.1/name/${country}`
-    );
-    const countryInfo = await response6.json();
-    data.push(countryInfo);
-
     loader.style.display = "none";
 
-    return data;
+    // Create a new object with latitude and longitude to return alongside other fetched data
+    const location = {
+      latitude,
+      longitude,
+    };
+    return { data, location };
   } catch (error) {
-async function handleSearch() {
-  const searchInput = document.querySelector(".searchInput");
-  const searchedCity = searchInput.value;
-  searchInput.value = "";
-
-  try {
-    const response = await fetch(
-      `https://api.openweathermap.org/geo/1.0/direct?q=${searchedCity}&limit=1&appid=${key}`
-    );
-    const data = await response.json();
-
-    if (data.length === 0) {
-      throw new Error("City not found.");
-    }
     loader.style.display = "none";
-    cityName = `${data[0].name}, ${data[0].country}`;
-    const { lat, lon } = data[0];
-
-    fetchData(lat, lon).then((data) => {
-    fetchData(location.lat, location.long).then((data) => {
+    console.error(error);
+    // Handle error gracefully and alert the user
     alert("Something went wrong. Please try again later.");
   }
 }
 
 function actualWeather(data) {
-  } catch (error) {
-    console.error(error);
-    // Handle error gracefully and alert the user
-    alert("City not found. Please try again.");
-  locationWeather.innerHTML = `${data[0].name}, ${
-  const searchInput = document.querySelector(".searchInput");
-  const searchedCity = searchInput.value;
-  searchInput.value = "";
+  const city = document.querySelector(".city");
+  city.innerHTML = `${data[0].name}, ${data[0].sys.country}`;
+  weatherDescription.innerHTML = `${data[0].weather[0].description}`;
 
-    const response = await fetch(
-      `https://api.openweathermap.org/geo/1.0/direct?q=${searchedCity}&limit=1&appid=${key}`
-// Update the location and weather data every 5 minutes
-setInterval(showData, 300000);
-    );
-    const data = await response.json();
-
-    if (data.length === 0) {
-      throw new Error("City not found.");
-  } | ${Math.round(data[0].main.temp)}° | `;
+  topInfo.innerHTML = `${Math.round(data[0].main.temp)}°c`;
   const weatherIcon = document.createElement("img");
-    cityName = `${data[0].name}, ${data[0].country}`;
-    const { lat, lon } = data[0];
-  locationWeather.appendChild(weatherIcon);
-    fetchData(lat, lon).then((data) => {
-      actualWeather(data);
-      displayAirQuality(data);
-      weatherInfo.innerHTML = generalInfo(data);
-      getForecast(data);
-      getNews(data);
-    });
-  } catch (error) {
-    console.error(error);
-    // Handle error gracefully and alert the user
-    alert("City not found. Please try again.");
+  weatherIcon.src = `http://openweathermap.org/img/w/${data[0].weather[0].icon}.png`;
+  topInfo.appendChild(weatherIcon);
+}
+
+const map = L.map("map").setView([0, 0], 1);
+
+// Add a TileLayer for the map background
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 3,
+}).addTo(map);
+
+const temperatureLayer = L.tileLayer(
+  `https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=${key}`,
+  {
+    maxZoom: 18,
   }
-    fetchData(location.lat, location.long).then((data) => {
+);
+
+let marker;
+
+function showData() {
+  fetchData()
+    .then(({ data, location }) => {
       console.log(data);
       actualWeather(data);
       displayAirQuality(data);
+      weatherInfo.innerHTML = currentWeather(data);
       getForecast(data);
       getNews(data);
-// Update the location and weather data every 5 minutes
-setInterval(showData, 300000);
+
+      // Update map view with the location data
+      const { latitude, longitude } = location;
+      map.setView([latitude, longitude], 12);
+
+      // Remove the temperature layer if it exists
+      if (temperatureLayer) {
+        temperatureLayer.remove();
+      }
+
+      temperatureLayer.addTo(map);
+
+      // Remove previous marker, if any
+      if (marker) {
+        map.removeLayer(marker);
+      }
+
+      marker = L.marker([latitude, longitude]).addTo(map);
+    })
+    .catch((error) => {
+      console.error(error);
+      // Handle error gracefully and alert the user
+      alert("Something went wrong. Please try again later.");
     });
-  });
 }
 
 showData();
 
-async function handleSearch() {
+function handleSearch() {
   const searchInput = document.querySelector(".searchInput");
-  const searchedCity = searchInput.value;
+  cityName = searchInput.value;
   searchInput.value = "";
-
-  try {
-    const response = await fetch(
-      `https://api.openweathermap.org/geo/1.0/direct?q=${searchedCity}&limit=1&appid=${key}`
-    );
-    const data = await response.json();
-
-    if (data.length === 0) {
-      throw new Error("City not found.");
-    }
-
-    cityName = `${data[0].name}, ${data[0].country}`;
-    const { lat, lon } = data[0];
-
-    fetchData(lat, lon).then((data) => {
-      actualWeather(data);
-      displayAirQuality(data);
-      weatherInfo.innerHTML = generalInfo(data);
-      getForecast(data);
-      getNews(data);
-    });
-  } catch (error) {
-    console.error(error);
-    // Handle error gracefully and alert the user
-    alert("City not found. Please try again.");
-  }
 }
 
 searchButton.addEventListener("click", function () {
   handleSearch();
+  showData();
 });
-
-// Update the location and weather data every 5 minutes
-setInterval(showData, 300000);
