@@ -20,11 +20,6 @@ body {
   font-family: $font_family;
 }
 
-#map {
-  height: 400px;
-  width: 400px;
-}
-
 // Header
 
 header {
@@ -205,6 +200,18 @@ header {
 
 .weatherInfo span {
   font-weight: bold;
+}
+
+// Map
+
+.mapWrapper {
+  @include theme(cards);
+}
+
+#map {
+  min-height: 350px;
+  min-width: 350px;
+  border-radius: 5px;
 }
 
 // Air quality div

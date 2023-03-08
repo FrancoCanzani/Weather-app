@@ -3,6 +3,7 @@ import { displayAirQuality } from "./airQuality.js";
 import { getForecast } from "./forecast";
 import { getNews } from "./news";
 import { currentWeather } from "./currentWeather";
+import { showMap } from "./map";
 
 const weatherInfo = document.querySelector(".weatherInfo");
 const topInfo = document.querySelector(".topInfo");
@@ -80,22 +81,6 @@ function actualWeather(data) {
   topInfo.appendChild(weatherIcon);
 }
 
-const map = L.map("map").setView([0, 0], 1);
-
-// Add a TileLayer for the map background
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 3,
-}).addTo(map);
-
-const temperatureLayer = L.tileLayer(
-  `https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=${key}`,
-  {
-    maxZoom: 18,
-  }
-);
-
-let marker;
-
 function showData() {
   fetchData()
     .then(({ data, location }) => {
@@ -105,24 +90,7 @@ function showData() {
       weatherInfo.innerHTML = currentWeather(data);
       getForecast(data);
       getNews(data);
-
-      // Update map view with the location data
-      const { latitude, longitude } = location;
-      map.setView([latitude, longitude], 12);
-
-      // Remove the temperature layer if it exists
-      if (temperatureLayer) {
-        temperatureLayer.remove();
-      }
-
-      temperatureLayer.addTo(map);
-
-      // Remove previous marker, if any
-      if (marker) {
-        map.removeLayer(marker);
-      }
-
-      marker = L.marker([latitude, longitude]).addTo(map);
+      showMap(location);
     })
     .catch((error) => {
       console.error(error);
