@@ -1,23 +1,22 @@
 import styles from "../styles/style.css";
-import { displayAirQuality } from "./airQuality.js";
+
+import { showWeather } from "./currentWeather";
 import { getForecast } from "./forecast";
-import { getNews } from "./news";
-import { currentWeather } from "./currentWeather";
 import { showMap } from "./map";
 
-const weatherInfo = document.querySelector(".weatherInfo");
-const topInfo = document.querySelector(".topInfo");
 const key = "629531abca22eb8266b74fa0de195aec";
 
 const searchButton = document.querySelector(".search");
+const searchInput = document.querySelector(".searchInput");
 const loader = document.querySelector(".lds-ripple");
-const weatherDescription = document.querySelector(".weatherDescription");
+const content = document.querySelector(".content");
 
 let cityName = "London, GB";
 
 async function fetchData() {
   const data = [];
 
+  content.style.display = "none";
   loader.style.display = "block";
 
   try {
@@ -28,7 +27,6 @@ async function fetchData() {
 
     const latitude = data1[0].lat;
     const longitude = data1[0].lon;
-    const country = data1[0].country;
 
     const response2 = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}&units=metric`
@@ -48,13 +46,8 @@ async function fetchData() {
     const airPollution = await response4.json();
     data.push(airPollution);
 
-    const response5 = await fetch(
-      `https://newsdata.io/api/1/news?apikey=pub_181676ee5721562b81df48d143874f564e726&country=${country}`
-    );
-    const news = await response5.json();
-    data.push(news);
-
     loader.style.display = "none";
+    content.style.display = "grid";
 
     // Create a new object with latitude and longitude to return alongside other fetched data
     const location = {
@@ -70,27 +63,13 @@ async function fetchData() {
   }
 }
 
-function actualWeather(data) {
-  const city = document.querySelector(".city");
-  city.innerHTML = `${data[0].name}, ${data[0].sys.country}`;
-  weatherDescription.innerHTML = `${data[0].weather[0].description}`;
-
-  topInfo.innerHTML = `${Math.round(data[0].main.temp)}°c`;
-  const weatherIcon = document.createElement("img");
-  weatherIcon.src = `http://openweathermap.org/img/w/${data[0].weather[0].icon}.png`;
-  topInfo.appendChild(weatherIcon);
-}
-
 function showData() {
   fetchData()
     .then(({ data, location }) => {
       console.log(data);
-      actualWeather(data);
-      displayAirQuality(data);
-      weatherInfo.innerHTML = currentWeather(data);
-      getForecast(data);
-      getNews(data);
       showMap(location);
+      showWeather(data);
+      // getForecast(data);
     })
     .catch((error) => {
       console.error(error);
@@ -110,4 +89,19 @@ function handleSearch() {
 searchButton.addEventListener("click", function () {
   handleSearch();
   showData();
+});
+
+searchInput.addEventListener("keydown", (event) => {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+
+    const searchTerm = searchInput.value.trim();
+
+    if (searchTerm !== "") {
+      handleSearch();
+      showData();
+    } else {
+      return;
+    }
+  }
 });

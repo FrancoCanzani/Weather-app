@@ -1,36 +1,89 @@
-function currentWeather(data) {
-  // Convert Unix timestamp values for sunrise and sunset
-  const sunriseDate = new Date(data[0].sys.sunrise * 1000);
-  const sunsetDate = new Date(data[0].sys.sunset * 1000);
+const weatherMetrics = document.querySelector(".weatherMetrics");
 
-  topInfo.innerHTML = "Current weather";
+function showWeather(data) {
+  weatherMetrics.innerHTML = "";
 
-  actualWeather.innerHTML = `${Math.round(data[0].main.temp)}°c`;
+  const title = document.createElement("h1");
+  title.classList.add("title");
+  title.innerText = "Current Weather";
+
+  //   Current temperature
+  const temperature = document.createElement("div");
+  temperature.classList.add("temperature");
+  const degrees = document.createElement("h1");
+  degrees.classList.add("degrees");
+  degrees.innerText = `${Math.round(data[0].main.temp)}°c`;
+  const weatherDescription = document.createElement("h4");
+  weatherDescription.classList.add("weatherDescription");
+  weatherDescription.innerText = `${data[0].weather[0].description}`;
+
+  temperature.append(degrees);
+  temperature.append(weatherDescription);
+
+  // Weather Icon
   const weatherIcon = document.createElement("img");
-  weatherIcon.src = `http://openweathermap.org/img/w/${data[0].weather[0].icon}.png`;
-  actualWeather.appendChild(weatherIcon);
+  weatherIcon.src = `./images/${data[0].weather[0].icon}.svg`;
 
-  const weatherData = {
-    feels_like: `<p>Feels like: <span>${Math.round(
-      data[0].main.feels_like
-    )}°c</span></p>`,
-    cloud: `<p>Cloud cover: <span>${data[0].clouds.all}%</span></p>`,
-    humidity: `<p>Humidity: <span>${data[0].main.humidity}%</span></p>`,
-    pressure: `<p>Pressure: <span>${data[0].main.pressure} Milibars</span></p>`,
-    wind_speed: `<p>Wind speed: <span>${data[0].wind.speed} KM/h</span></p>`,
-    visibility: `<p>Visibility: <span>${
-      data[0].visibility / 1000
-    } KM</span></p>`,
-    sunrise: `<p>Sunrise: <span>${sunriseDate.toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-    })}</span></p>`,
-    sunset: `<p>Sunset: <span>${sunsetDate.toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-    })}</span></p>`,
-  };
-  return Object.values(weatherData).join("\n");
+  // Humidity
+
+  const humidity = document.createElement("div");
+  humidity.classList.add("metrics");
+  const humidityTitle = document.createElement("h1");
+  humidityTitle.innerText = "Humidity";
+  humidityTitle.classList.add("metricTitle");
+  const humidityIcon = document.createElement("img");
+  humidityIcon.src = `./images/humidity.svg`;
+  humidityIcon.classList.add("metricsIcon");
+  const humidityPerc = document.createElement("h1");
+  humidityPerc.innerText = `${data[0].main.humidity}%`;
+  humidityPerc.classList.add("weatherMetric");
+  humidity.append(humidityTitle);
+  humidity.append(humidityIcon);
+  humidity.append(humidityPerc);
+
+  // Wind
+
+  const wind = document.createElement("div");
+  wind.classList.add("metrics");
+  const windTitle = document.createElement("h1");
+  windTitle.innerText = "Wind";
+  windTitle.classList.add("metricTitle");
+  const windIcon = document.createElement("img");
+  windIcon.src = `./images/windsock.svg`;
+  windIcon.classList.add("metricsIcon");
+  const windData = document.createElement("h1");
+  windData.innerText = `${Math.round(data[0].wind.speed)} KM/h`;
+  windData.classList.add("weatherMetric");
+  wind.append(windTitle);
+  wind.append(windIcon);
+  wind.append(windData);
+
+  //  Pressure
+
+  const pressure = document.createElement("div");
+  pressure.classList.add("metrics");
+  const pressureTitle = document.createElement("h1");
+  pressureTitle.innerText = "Pressure";
+  pressureTitle.classList.add("metricTitle");
+  const pressureIcon = document.createElement("img");
+  if (data[0].main.pressure > 1000) {
+    pressureIcon.src = `./images/pressure-high.svg`;
+  } else {
+    pressureIcon.src = `./images/pressure-low.svg`;
+  }
+  pressureIcon.classList.add("metricsIcon");
+  const pressureData = document.createElement("h1");
+  pressureData.innerText = `${data[0].main.pressure} hPa`;
+  pressureData.classList.add("weatherMetric");
+  pressure.append(pressureTitle);
+  pressure.append(pressureIcon);
+  pressure.append(pressureData);
+
+  weatherMetrics.append(temperature);
+  weatherMetrics.append(weatherIcon);
+  weatherMetrics.append(humidity);
+  weatherMetrics.append(wind);
+  weatherMetrics.append(pressure);
 }
 
-export { currentWeather };
+export { showWeather };

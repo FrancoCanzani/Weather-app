@@ -27,22 +27,6 @@ header {
   position: relative;
 }
 
-.locationWeather {
-  height: 25%;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: $primary_font;
-  color: black;
-  font-weight: bolder;
-  position: absolute;
-  left: 0;
-  margin-left: 1.3rem;
-}
-
 .searchBar {
   display: flex;
   align-items: center;
@@ -193,65 +177,78 @@ header {
 .currentWeather {
   @include theme(cards);
   margin-bottom: 1rem;
+
+  .weatherMetrics {
+    display: flex;
+    align-items: center;
+
+    .temperature {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      .degrees {
+        font-size: 2.5rem;
+        font-weight: bold;
+      }
+
+      .weatherDescription {
+        text-transform: uppercase;
+        font-size: 0.6rem;
+        font-style: italic;
+      }
+    }
+  }
+
+  img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .metrics {
+    @include theme(cards);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .metricTitle {
+    font-weight: bold;
+    font-style: italic;
+    text-transform: uppercase;
+  }
+
+  .metricsIcon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .weatherMetric {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
 }
 
-.topInfo {
-  margin: 1rem 1rem 0 1rem;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-style: italic;
-}
-
-.weatherDescription {
-  text-transform: capitalize;
-  text-align: center;
-  font-weight: 500;
-  font-style: oblique;
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px dashed black;
-}
-
-.weatherInfo span {
-  font-weight: bold;
+.weatherImage {
+  height: 200px;
+  width: 200px;
 }
 
 // Map
 
 .mapWrapper {
   @include theme(cards);
+  height: 400px;
+  width: 400px;
 }
 
 #map {
   min-height: 350px;
   min-width: 350px;
   border-radius: 5px;
-}
-
-// Air quality div
-
-.airPollution {
-  @include theme(cards);
-  margin-bottom: 1rem;
-}
-
-.components {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  .leftComponents,
-  .rightComponents {
-    margin: 0.5rem;
-  }
-}
-
-.components span {
-  font-weight: bold;
 }
 
 // Forecast
@@ -302,49 +299,4 @@ header {
 .countryInfo {
   @include theme(cards);
   width: 100%;
-}
-
-// News
-
-.news {
-  background: $primary_color;
-  padding: 1rem;
-
-  .newsContainer {
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgb(188, 188, 188);
-  }
-
-  .sectionTitle {
-    font-weight: bolder;
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 2px solid black;
-  }
-
-  .newsTitle {
-    text-transform: uppercase;
-    text-decoration: none;
-    color: black;
-  }
-
-  .newsTitle:hover {
-    text-decoration: underline;
-  }
-
-  .newsCategory {
-    text-transform: capitalize;
-    font-size: 0.9rem;
-    margin-bottom: 0.3rem;
-    font-style: italic;
-    font-weight: bolder;
-  }
-
-  .newsDate {
-    margin-top: 0.3rem;
-    font-size: 0.8rem;
-    color: rgb(84, 84, 84);
-  }
 }

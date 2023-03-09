@@ -130,11 +130,6 @@ table {
   border-spacing: 0;
 }
 
-#map {
-  height: 400px;
-  width: 400px;
-}
-
 header {
   height: 7vh;
   padding: 0.5rem;
@@ -142,22 +137,6 @@ header {
   justify-content: center;
   align-items: center;
   position: relative;
-}
-
-.locationWeather {
-  height: 25%;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: helvetica, sans-serif;
-  color: black;
-  font-weight: bolder;
-  position: absolute;
-  left: 0;
-  margin-left: 1.3rem;
 }
 
 .searchBar {
@@ -171,7 +150,7 @@ header {
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.searchBar input[type="text"] {
+.searchBar input[type=text] {
   flex: 1;
   border: none;
   padding: 10px;
@@ -180,15 +159,15 @@ header {
   background-color: transparent;
 }
 
-.searchBar input[type="text"]::-moz-placeholder {
+.searchBar input[type=text]::-moz-placeholder {
   color: #7b7b7b;
 }
 
-.searchBar input[type="text"]::placeholder {
+.searchBar input[type=text]::placeholder {
   color: #7b7b7b;
 }
 
-.searchBar input[type="text"]:focus {
+.searchBar input[type=text]:focus {
   outline: none;
 }
 
@@ -304,35 +283,62 @@ header {
   margin-right: 1rem;
   background-color: rgba(255, 255, 255, 0.87);
   border-radius: 10px;
-  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4),
-    0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1),
-    inset 0 0 2px rgba(0, 149, 255, 0.2);
+  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
   margin-bottom: 1rem;
 }
-
-.topInfo {
-  margin: 1rem 1rem 0 1rem;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 1.5rem;
+.currentWeather .weatherMetrics {
   display: flex;
   align-items: center;
+}
+.currentWeather .weatherMetrics .temperature {
+  display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.currentWeather .weatherMetrics .temperature .degrees {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+.currentWeather .weatherMetrics .temperature .weatherDescription {
+  text-transform: uppercase;
+  font-size: 0.6rem;
   font-style: italic;
 }
-
-.weatherDescription {
-  text-transform: capitalize;
-  text-align: center;
-  font-weight: 500;
-  font-style: oblique;
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px dashed black;
+.currentWeather img {
+  width: 150px;
+  height: 150px;
+}
+.currentWeather .metrics {
+  line-height: 1.25;
+  padding: 2rem;
+  margin-right: 1rem;
+  background-color: rgba(255, 255, 255, 0.87);
+  border-radius: 10px;
+  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+}
+.currentWeather .metricTitle {
+  font-weight: bold;
+  font-style: italic;
+  text-transform: uppercase;
+}
+.currentWeather .metricsIcon {
+  width: 80px;
+  height: 80px;
+}
+.currentWeather .weatherMetric {
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 
-.weatherInfo span {
-  font-weight: bold;
+.weatherImage {
+  height: 200px;
+  width: 200px;
 }
 
 .mapWrapper {
@@ -341,9 +347,9 @@ header {
   margin-right: 1rem;
   background-color: rgba(255, 255, 255, 0.87);
   border-radius: 10px;
-  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4),
-    0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1),
-    inset 0 0 2px rgba(0, 149, 255, 0.2);
+  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
+  height: 400px;
+  width: 400px;
 }
 
 #map {
@@ -352,41 +358,13 @@ header {
   border-radius: 5px;
 }
 
-.airPollution {
-  line-height: 1.25;
-  padding: 2rem;
-  margin-right: 1rem;
-  background-color: rgba(255, 255, 255, 0.87);
-  border-radius: 10px;
-  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4),
-    0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1),
-    inset 0 0 2px rgba(0, 149, 255, 0.2);
-  margin-bottom: 1rem;
-}
-
-.components {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.components .leftComponents,
-.components .rightComponents {
-  margin: 0.5rem;
-}
-
-.components span {
-  font-weight: bold;
-}
-
 .forecast {
   line-height: 1.25;
   padding: 2rem;
   margin-right: 1rem;
   background-color: rgba(255, 255, 255, 0.87);
   border-radius: 10px;
-  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4),
-    0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1),
-    inset 0 0 2px rgba(0, 149, 255, 0.2);
+  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
 }
 .forecast .forecastInfo {
   display: flex;
@@ -428,45 +406,6 @@ header {
   margin-right: 1rem;
   background-color: rgba(255, 255, 255, 0.87);
   border-radius: 10px;
-  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4),
-    0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1),
-    inset 0 0 2px rgba(0, 149, 255, 0.2);
+  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
   width: 100%;
-}
-
-.news {
-  background: #f8f9fa;
-  padding: 1rem;
-}
-.news .newsContainer {
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgb(188, 188, 188);
-}
-.news .sectionTitle {
-  font-weight: bolder;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid black;
-}
-.news .newsTitle {
-  text-transform: uppercase;
-  text-decoration: none;
-  color: black;
-}
-.news .newsTitle:hover {
-  text-decoration: underline;
-}
-.news .newsCategory {
-  text-transform: capitalize;
-  font-size: 0.9rem;
-  margin-bottom: 0.3rem;
-  font-style: italic;
-  font-weight: bolder;
-}
-.news .newsDate {
-  margin-top: 0.3rem;
-  font-size: 0.8rem;
-  color: rgb(84, 84, 84);
-} /*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
