@@ -3,10 +3,17 @@ function currentWeather(data) {
   const sunriseDate = new Date(data[0].sys.sunrise * 1000);
   const sunsetDate = new Date(data[0].sys.sunset * 1000);
 
+  topInfo.innerHTML = "Current weather";
+
+  actualWeather.innerHTML = `${Math.round(data[0].main.temp)}°c`;
+  const weatherIcon = document.createElement("img");
+  weatherIcon.src = `http://openweathermap.org/img/w/${data[0].weather[0].icon}.png`;
+  actualWeather.appendChild(weatherIcon);
+
   const weatherData = {
     feels_like: `<p>Feels like: <span>${Math.round(
       data[0].main.feels_like
-    )}°</span></p>`,
+    )}°c</span></p>`,
     cloud: `<p>Cloud cover: <span>${data[0].clouds.all}%</span></p>`,
     humidity: `<p>Humidity: <span>${data[0].main.humidity}%</span></p>`,
     pressure: `<p>Pressure: <span>${data[0].main.pressure} Milibars</span></p>`,

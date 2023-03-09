@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
 html,
 body,
 div,
@@ -130,16 +130,34 @@ table {
   border-spacing: 0;
 }
 
-body {
-  font-family: "Open Sans", sans-serif;
+#map {
+  height: 400px;
+  width: 400px;
 }
 
 header {
-  height: 10vh;
+  height: 7vh;
   padding: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.locationWeather {
+  height: 25%;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: helvetica, sans-serif;
+  color: black;
+  font-weight: bolder;
+  position: absolute;
+  left: 0;
+  margin-left: 1.3rem;
 }
 
 .searchBar {
@@ -153,7 +171,7 @@ header {
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.searchBar input[type=text] {
+.searchBar input[type="text"] {
   flex: 1;
   border: none;
   padding: 10px;
@@ -162,15 +180,15 @@ header {
   background-color: transparent;
 }
 
-.searchBar input[type=text]::-moz-placeholder {
+.searchBar input[type="text"]::-moz-placeholder {
   color: #7b7b7b;
 }
 
-.searchBar input[type=text]::placeholder {
+.searchBar input[type="text"]::placeholder {
   color: #7b7b7b;
 }
 
-.searchBar input[type=text]:focus {
+.searchBar input[type="text"]:focus {
   outline: none;
 }
 
@@ -212,6 +230,7 @@ header {
 .content {
   display: grid;
   grid-template-columns: 3fr 1fr;
+  font-family: helvetica, sans-serif;
 }
 
 .lds-ripple {
@@ -267,10 +286,11 @@ header {
 .weather {
   padding: 1rem;
   background: #eff8ff;
-  color: #151f49;
+  color: black;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  position: relative;
 }
 
 .title {
@@ -284,7 +304,9 @@ header {
   margin-right: 1rem;
   background-color: rgba(255, 255, 255, 0.87);
   border-radius: 10px;
-  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
+  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4),
+    0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1),
+    inset 0 0 2px rgba(0, 149, 255, 0.2);
   margin-bottom: 1rem;
 }
 
@@ -319,7 +341,9 @@ header {
   margin-right: 1rem;
   background-color: rgba(255, 255, 255, 0.87);
   border-radius: 10px;
-  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
+  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4),
+    0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1),
+    inset 0 0 2px rgba(0, 149, 255, 0.2);
 }
 
 #map {
@@ -334,7 +358,9 @@ header {
   margin-right: 1rem;
   background-color: rgba(255, 255, 255, 0.87);
   border-radius: 10px;
-  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
+  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4),
+    0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1),
+    inset 0 0 2px rgba(0, 149, 255, 0.2);
   margin-bottom: 1rem;
 }
 
@@ -358,14 +384,9 @@ header {
   margin-right: 1rem;
   background-color: rgba(255, 255, 255, 0.87);
   border-radius: 10px;
-  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
-}
-.forecast h1 {
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
+  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4),
+    0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1),
+    inset 0 0 2px rgba(0, 149, 255, 0.2);
 }
 .forecast .forecastInfo {
   display: flex;
@@ -389,8 +410,28 @@ header {
   font-weight: bolder;
 }
 .forecast .forecastData img {
-  width: 45%;
-  height: 45%;
+  width: 50%;
+  height: 50%;
+}
+.forecast .forecastTitle {
+  height: 25%;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: helvetica, sans-serif;
+}
+
+.countryInfo {
+  line-height: 1.25;
+  padding: 2rem;
+  margin-right: 1rem;
+  background-color: rgba(255, 255, 255, 0.87);
+  border-radius: 10px;
+  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4),
+    0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1),
+    inset 0 0 2px rgba(0, 149, 255, 0.2);
+  width: 100%;
 }
 
 .news {
@@ -428,4 +469,4 @@ header {
   margin-top: 0.3rem;
   font-size: 0.8rem;
   color: rgb(84, 84, 84);
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */
