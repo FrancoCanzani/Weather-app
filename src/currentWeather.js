@@ -22,6 +22,7 @@ function showWeather(data) {
 
   // Weather Icon
   const weatherIcon = document.createElement("img");
+  weatherIcon.classList.add("weatherIcon");
   weatherIcon.src = `./images/${data[0].weather[0].icon}.svg`;
 
   // Humidity

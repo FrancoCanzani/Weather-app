@@ -177,10 +177,12 @@ header {
 .currentWeather {
   @include theme(cards);
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 
   .weatherMetrics {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 
     .temperature {
       display: flex;
@@ -199,11 +201,12 @@ header {
         font-style: italic;
       }
     }
-  }
 
-  img {
-    width: 150px;
-    height: 150px;
+    .weatherIcon {
+      width: 150px;
+      height: 150px;
+      margin-right: 1rem;
+    }
   }
 
   .metrics {
@@ -230,11 +233,6 @@ header {
     font-size: 1.3rem;
     font-weight: bold;
   }
-}
-
-.weatherImage {
-  height: 200px;
-  width: 200px;
 }
 
 // Map

@@ -285,10 +285,12 @@ header {
   border-radius: 10px;
   box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 .currentWeather .weatherMetrics {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 .currentWeather .weatherMetrics .temperature {
   display: flex;
@@ -305,9 +307,10 @@ header {
   font-size: 0.6rem;
   font-style: italic;
 }
-.currentWeather img {
+.currentWeather .weatherMetrics .weatherIcon {
   width: 150px;
   height: 150px;
+  margin-right: 1rem;
 }
 .currentWeather .metrics {
   line-height: 1.25;
@@ -334,11 +337,6 @@ header {
 .currentWeather .weatherMetric {
   font-size: 1.3rem;
   font-weight: bold;
-}
-
-.weatherImage {
-  height: 200px;
-  width: 200px;
 }
 
 .mapWrapper {
