@@ -1,8 +1,9 @@
 import styles from "../styles/style.css";
 
 import { showWeather } from "./currentWeather";
-import { getForecast } from "./forecast";
+import { showForecast } from "./forecast";
 import { showMap } from "./map";
+import { showMiscellaneous } from "./miscellaneous";
 
 const key = "629531abca22eb8266b74fa0de195aec";
 
@@ -11,7 +12,7 @@ const searchInput = document.querySelector(".searchInput");
 const loader = document.querySelector(".lds-ripple");
 const content = document.querySelector(".content");
 
-let cityName = "London, GB";
+let cityName = "Denia, ES";
 
 async function fetchData() {
   const data = [];
@@ -69,16 +70,19 @@ function showData() {
       console.log(data);
       showMap(location);
       showWeather(data);
-      // getForecast(data);
+      showForecast(data);
+      showMiscellaneous(data);
     })
     .catch((error) => {
       console.error(error);
-      // Handle error gracefully and alert the user
-      alert("Something went wrong. Please try again later.");
     });
 }
 
 showData();
+
+setInterval(() => {
+  showData();
+}, 500000);
 
 function handleSearch() {
   const searchInput = document.querySelector(".searchInput");
@@ -105,3 +109,21 @@ searchInput.addEventListener("keydown", (event) => {
     }
   }
 });
+
+window.onscroll = function () {
+  myFunction();
+};
+
+const header = document.querySelector("header");
+
+// Get the offset position of the navbar
+const sticky = header.offsetTop + header.offsetHeight;
+
+// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}

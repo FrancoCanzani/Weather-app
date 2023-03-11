@@ -16,6 +16,10 @@ $primary_font: helvetica, sans-serif;
 $primary_color: #f8f9fa;
 $second_color: black;
 
+body {
+  font-family: $primary_font;
+}
+
 // Header
 
 header {
@@ -24,7 +28,21 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  background-color: rgba(255, 255, 255, 0.87);
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky > * {
+  transform: translateY(0);
+}
+
+.sticky > .content {
+  padding-top: 7vh;
 }
 
 .searchBar {
@@ -97,9 +115,7 @@ header {
 // Main content
 
 .content {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  font-family: $primary_font;
+  display: flex;
 }
 
 // Loader
@@ -164,12 +180,12 @@ header {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  position: relative;
 }
 
 .title {
   text-transform: uppercase;
   font-weight: bold;
+  margin-bottom: 1rem;
 }
 
 // Current weather
@@ -212,10 +228,11 @@ header {
   .metrics {
     @include theme(cards);
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     padding: 1rem;
+    margin: 0 1rem 1rem 0;
   }
 
   .metricTitle {
@@ -232,6 +249,62 @@ header {
   .weatherMetric {
     font-size: 1.3rem;
     font-weight: bold;
+  }
+}
+
+// Miscellaneous
+
+.miscellaneous {
+  @include theme(cards);
+  margin-bottom: 1rem;
+
+  .miscellaneousMetrics {
+    min-width: 250px;
+
+    .misc {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgb(209, 209, 209);
+      padding-bottom: 0.1rem;
+      margin-bottom: 0.3rem;
+
+      .miscIcon {
+        height: 30px;
+        width: 30px;
+        margin-right: 5px;
+      }
+
+      .miscText {
+        min-width: 60%;
+        font-weight: bold;
+        font-style: italic;
+      }
+
+      .miscMetric {
+        font-style: italic;
+      }
+    }
+
+    .sunset {
+      display: flex;
+      align-items: center;
+
+      .miscIcon {
+        height: 30px;
+        width: 30px;
+        margin-right: 5px;
+      }
+
+      .miscText {
+        min-width: 60%;
+        font-weight: bold;
+        font-style: italic;
+      }
+
+      .miscMetric {
+        font-style: italic;
+      }
+    }
   }
 }
 
@@ -254,16 +327,21 @@ header {
 .forecast {
   @include theme(cards);
 
-  .forecastInfo {
+  .forecastMetrics {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     flex-wrap: wrap;
   }
 
   .forecastDay {
-    margin: 10px;
-    padding: 5px;
+    @include theme(cards);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+    margin: 0 1rem 1rem 0;
   }
 
   .forecastDate {
@@ -275,22 +353,36 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
     font-weight: bolder;
 
-    img {
-      width: 50%;
-      height: 50%;
+    .forecastTemp {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      .forecastDegrees {
+        font-weight: bold;
+        font-size: 1.4rem;
+      }
+
+      .forecastDescription {
+        text-transform: uppercase;
+        font-size: 0.5rem;
+        font-style: italic;
+      }
+    }
+
+    .forecastIcon {
+      width: 60px;
+      height: 60px;
     }
   }
 
   .forecastTitle {
-    height: 25%;
+    font-weight: bold;
+    font-style: italic;
     text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    font-family: $primary_font;
   }
 }
 

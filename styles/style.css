@@ -130,13 +130,31 @@ table {
   border-spacing: 0;
 }
 
+body {
+  font-family: helvetica, sans-serif;
+}
+
 header {
   height: 7vh;
   padding: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  background-color: rgba(255, 255, 255, 0.87);
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky > * {
+  transform: translateY(0);
+}
+
+.sticky > .content {
+  padding-top: 7vh;
 }
 
 .searchBar {
@@ -207,9 +225,7 @@ header {
 }
 
 .content {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  font-family: helvetica, sans-serif;
+  display: flex;
 }
 
 .lds-ripple {
@@ -269,12 +285,12 @@ header {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  position: relative;
 }
 
 .title {
   text-transform: uppercase;
   font-weight: bold;
+  margin-bottom: 1rem;
 }
 
 .currentWeather {
@@ -320,10 +336,11 @@ header {
   border-radius: 10px;
   box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   padding: 1rem;
+  margin: 0 1rem 1rem 0;
 }
 .currentWeather .metricTitle {
   font-weight: bold;
@@ -337,6 +354,56 @@ header {
 .currentWeather .weatherMetric {
   font-size: 1.3rem;
   font-weight: bold;
+}
+
+.miscellaneous {
+  line-height: 1.25;
+  padding: 2rem;
+  margin-right: 1rem;
+  background-color: rgba(255, 255, 255, 0.87);
+  border-radius: 10px;
+  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
+  margin-bottom: 1rem;
+}
+.miscellaneous .miscellaneousMetrics {
+  min-width: 250px;
+}
+.miscellaneous .miscellaneousMetrics .misc {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(209, 209, 209);
+  padding-bottom: 0.1rem;
+  margin-bottom: 0.3rem;
+}
+.miscellaneous .miscellaneousMetrics .misc .miscIcon {
+  height: 30px;
+  width: 30px;
+  margin-right: 5px;
+}
+.miscellaneous .miscellaneousMetrics .misc .miscText {
+  min-width: 60%;
+  font-weight: bold;
+  font-style: italic;
+}
+.miscellaneous .miscellaneousMetrics .misc .miscMetric {
+  font-style: italic;
+}
+.miscellaneous .miscellaneousMetrics .sunset {
+  display: flex;
+  align-items: center;
+}
+.miscellaneous .miscellaneousMetrics .sunset .miscIcon {
+  height: 30px;
+  width: 30px;
+  margin-right: 5px;
+}
+.miscellaneous .miscellaneousMetrics .sunset .miscText {
+  min-width: 60%;
+  font-weight: bold;
+  font-style: italic;
+}
+.miscellaneous .miscellaneousMetrics .sunset .miscMetric {
+  font-style: italic;
 }
 
 .mapWrapper {
@@ -364,15 +431,25 @@ header {
   border-radius: 10px;
   box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
 }
-.forecast .forecastInfo {
+.forecast .forecastMetrics {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 .forecast .forecastDay {
-  margin: 10px;
-  padding: 5px;
+  line-height: 1.25;
+  padding: 2rem;
+  margin-right: 1rem;
+  background-color: rgba(255, 255, 255, 0.87);
+  border-radius: 10px;
+  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 0 1rem 1rem 0;
 }
 .forecast .forecastDate {
   font-weight: bolder;
@@ -382,20 +459,31 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
   font-weight: bolder;
 }
-.forecast .forecastData img {
-  width: 50%;
-  height: 50%;
+.forecast .forecastData .forecastTemp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.forecast .forecastData .forecastTemp .forecastDegrees {
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+.forecast .forecastData .forecastTemp .forecastDescription {
+  text-transform: uppercase;
+  font-size: 0.5rem;
+  font-style: italic;
+}
+.forecast .forecastData .forecastIcon {
+  width: 60px;
+  height: 60px;
 }
 .forecast .forecastTitle {
-  height: 25%;
+  font-weight: bold;
+  font-style: italic;
   text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  font-family: helvetica, sans-serif;
 }
 
 .countryInfo {

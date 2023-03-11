@@ -35,7 +35,7 @@ function showMap(location) {
 
   marker = L.marker([latitude, longitude]).addTo(map);
 
-  map.setZoom(5);
+  map.setZoom(4);
 }
 
 export { showMap };
