@@ -1,6 +1,7 @@
 import styles from "../styles/style.css";
 
 import { showWeather } from "./currentWeather";
+import { showEnvironmental } from "./environmental";
 import { showForecast } from "./forecast";
 import { showMap } from "./map";
 import { showMiscellaneous } from "./miscellaneous";
@@ -19,6 +20,18 @@ async function fetchData() {
 
   content.style.display = "none";
   loader.style.display = "block";
+
+  var myHeaders = new Headers();
+  myHeaders.append("x-access-token", "openuv-rxv6rlf4ce9ck-io");
+  myHeaders.append("Content-Type", "application/json");
+  const now = new Date();
+  const isoDateTime = now.toISOString();
+
+  var requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow",
+  };
 
   try {
     const response1 = await fetch(
@@ -47,6 +60,13 @@ async function fetchData() {
     const airPollution = await response4.json();
     data.push(airPollution);
 
+    const response5 = await fetch(
+      `https://api.openuv.io/api/v1/uv?lat=${latitude}&lng=${longitude}&alt=0&dt=${isoDateTime}`,
+      requestOptions
+    );
+    const uvData = await response5.json();
+    data.push(uvData);
+
     loader.style.display = "none";
     content.style.display = "grid";
 
@@ -72,6 +92,7 @@ function showData() {
       showWeather(data);
       showForecast(data);
       showMiscellaneous(data);
+      showEnvironmental(data);
     })
     .catch((error) => {
       console.error(error);

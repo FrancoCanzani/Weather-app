@@ -285,6 +285,7 @@ header {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  box-shadow: 50px 50px 65px 0px #fff9e1 inset;
 }
 
 .title {
@@ -298,7 +299,7 @@ header {
   padding: 2rem;
   margin-right: 1rem;
   background-color: rgba(255, 255, 255, 0.87);
-  border-radius: 10px;
+  border-radius: 1px;
   box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
   margin-bottom: 1rem;
   flex-wrap: wrap;
@@ -333,7 +334,7 @@ header {
   padding: 2rem;
   margin-right: 1rem;
   background-color: rgba(255, 255, 255, 0.87);
-  border-radius: 10px;
+  border-radius: 1px;
   box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
   display: flex;
   justify-content: flex-start;
@@ -361,7 +362,7 @@ header {
   padding: 2rem;
   margin-right: 1rem;
   background-color: rgba(255, 255, 255, 0.87);
-  border-radius: 10px;
+  border-radius: 1px;
   box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
   margin-bottom: 1rem;
 }
@@ -406,12 +407,50 @@ header {
   font-style: italic;
 }
 
+.environmental {
+  line-height: 1.25;
+  padding: 2rem;
+  margin-right: 1rem;
+  background-color: rgba(255, 255, 255, 0.87);
+  border-radius: 1px;
+  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
+  margin-bottom: 1rem;
+}
+.environmental .uvData {
+  padding: 0.2rem;
+  background-color: rgba(255, 255, 255, 0.87);
+  border-radius: 1px;
+  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
+  display: flex;
+  align-items: center;
+}
+.environmental .uvData .uv {
+  display: flex;
+  align-items: center;
+  min-width: 60%;
+  font-weight: bold;
+  font-style: italic;
+}
+.environmental .uvData .uv img {
+  width: 60px;
+  height: 60px;
+  margin-right: 5px;
+}
+.environmental .uvMetric {
+  margin: 1rem;
+  border: 2px;
+  box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-weight: bolder;
+}
+
 .mapWrapper {
   line-height: 1.25;
   padding: 2rem;
   margin-right: 1rem;
   background-color: rgba(255, 255, 255, 0.87);
-  border-radius: 10px;
+  border-radius: 1px;
   box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
   height: 400px;
   width: 400px;
@@ -428,7 +467,7 @@ header {
   padding: 2rem;
   margin-right: 1rem;
   background-color: rgba(255, 255, 255, 0.87);
-  border-radius: 10px;
+  border-radius: 1px;
   box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
 }
 .forecast .forecastMetrics {
@@ -442,7 +481,7 @@ header {
   padding: 2rem;
   margin-right: 1rem;
   background-color: rgba(255, 255, 255, 0.87);
-  border-radius: 10px;
+  border-radius: 1px;
   box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
   display: flex;
   justify-content: flex-start;
@@ -491,7 +530,7 @@ header {
   padding: 2rem;
   margin-right: 1rem;
   background-color: rgba(255, 255, 255, 0.87);
-  border-radius: 10px;
+  border-radius: 1px;
   box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
   width: 100%;
 }/*# sourceMappingURL=style.css.map */

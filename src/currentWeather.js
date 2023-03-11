@@ -61,30 +61,30 @@ function showWeather(data) {
 
   //  Pressure
 
-  const pressure = document.createElement("div");
-  pressure.classList.add("metrics");
-  const pressureTitle = document.createElement("h1");
-  pressureTitle.innerText = "Pressure";
-  pressureTitle.classList.add("metricTitle");
-  const pressureIcon = document.createElement("img");
-  if (data[0].main.pressure > 1000) {
-    pressureIcon.src = `./images/pressure-high.svg`;
-  } else {
-    pressureIcon.src = `./images/pressure-low.svg`;
-  }
-  pressureIcon.classList.add("metricsIcon");
-  const pressureData = document.createElement("h1");
-  pressureData.innerText = `${data[0].main.pressure} hPa`;
-  pressureData.classList.add("weatherMetric");
-  pressure.append(pressureTitle);
-  pressure.append(pressureIcon);
-  pressure.append(pressureData);
+  // const pressure = document.createElement("div");
+  // pressure.classList.add("metrics");
+  // const pressureTitle = document.createElement("h1");
+  // pressureTitle.innerText = "Pressure";
+  // pressureTitle.classList.add("metricTitle");
+  // const pressureIcon = document.createElement("img");
+  // if (data[0].main.pressure > 1000) {
+  //   pressureIcon.src = `./images/pressure-high.svg`;
+  // } else {
+  //   pressureIcon.src = `./images/pressure-low.svg`;
+  // }
+  // pressureIcon.classList.add("metricsIcon");
+  // const pressureData = document.createElement("h1");
+  // pressureData.innerText = `${data[0].main.pressure} hPa`;
+  // pressureData.classList.add("weatherMetric");
+  // pressure.append(pressureTitle);
+  // pressure.append(pressureIcon);
+  // pressure.append(pressureData);
 
   weatherMetrics.append(temperature);
   weatherMetrics.append(weatherIcon);
   weatherMetrics.append(humidity);
   weatherMetrics.append(wind);
-  weatherMetrics.append(pressure);
+  // weatherMetrics.append(pressure);
 }
 
 export { showWeather };
