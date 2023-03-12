@@ -1,6 +1,8 @@
 const uvData = document.querySelector(".uvData");
+const airQuality = document.querySelector(".airQuality");
 
 function showEnvironmental(data) {
+  // UV
   uvData.innerHTML = "";
 
   const uv = document.createElement("div");
@@ -16,6 +18,15 @@ function showEnvironmental(data) {
   const uvIndex = document.createElement("h2");
   uvIndex.innerText = `${data[3].result.uv.toFixed(1)}`;
   uvMetric.appendChild(uvIndex);
+  uv.appendChild(uvMetric);
+
+  const uvMaxTime = `${data[3].result.uv_max_time}`;
+  const dateObj = new Date(uvMaxTime);
+  const hours = dateObj.getHours();
+  const minutes = dateObj.getMinutes();
+  const uvMaxExposure = document.createElement("h6");
+  uvMaxExposure.classList.add("maxExposure");
+  uvMaxExposure.innerText = `⚠️ Max UV exposure at: ${hours}:${minutes}`;
 
   const uvIndexValue = parseInt(data[3].result.uv);
 
@@ -32,7 +43,43 @@ function showEnvironmental(data) {
   }
 
   uvData.appendChild(uv);
-  uvData.appendChild(uvMetric);
+  uvData.appendChild(uvMaxExposure);
+
+  // Air Quality
+
+  airQuality.innerHTML = "";
+
+  const aq = document.createElement("div");
+  aq.classList.add("aq");
+  const aqIcon = document.createElement("img");
+  aqIcon.src = `./images/air-quality.png`;
+  aq.appendChild(aqIcon);
+  const aqText = document.createElement("h2");
+  aqText.innerText = "Air Quality Index";
+  aq.appendChild(aqText);
+  const aqMetric = document.createElement("div");
+  aqMetric.classList.add("aqMetric");
+  const aqIndex = document.createElement("h2");
+  const aqIndexValue = `${data[2].list[0].main.aqi}`;
+  aqIndex.innerText = aqIndexValue;
+  aqMetric.appendChild(aqIndex);
+  aq.appendChild(aqMetric);
+
+  if (aqIndexValue == 0) {
+    aqMetric.style.backgroundColor = "#20bf55";
+  } else if (aqIndexValue == 2) {
+    aqMetric.style.backgroundColor = "#ffee32";
+  } else if (aqIndexValue == 3) {
+    aqMetric.style.backgroundColor = "#ff6700";
+  } else if (aqIndexValue == 4) {
+    aqMetric.style.backgroundColor = "#e5383b";
+  } else {
+    aqMetric.style.backgroundColor = "#b5179e";
+  }
+
+  uvData.appendChild(uv);
+  uvData.appendChild(uvMaxExposure);
+  airQuality.appendChild(aq);
 }
 
 export { showEnvironmental };

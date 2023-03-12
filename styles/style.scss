@@ -322,11 +322,12 @@ header {
       inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
     display: flex;
     align-items: center;
+    flex-direction: column;
+    margin-bottom: 1rem;
 
     .uv {
       display: flex;
       align-items: center;
-      min-width: 60%;
       font-weight: bold;
       font-style: italic;
 
@@ -336,17 +337,60 @@ header {
         margin-right: 5px;
       }
     }
+
+    .uvMetric {
+      margin: 1rem;
+      border: 2px;
+      box-shadow: 0 0 2px rgba(192, 225, 255, 0.6),
+        0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px #00b9f133,
+        inset 0 0 2px rgba(212, 127, 0, 0.1),
+        inset 0 0 2px rgba(0, 149, 255, 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-weight: bolder;
+    }
+
+    .maxExposure {
+      font-size: 0.6rem;
+    }
   }
 
-  .uvMetric {
-    margin: 1rem;
-    border: 2px;
+  .airQuality {
+    padding: 0.2rem;
+    background-color: rgba(255, 255, 255, 0.87);
+    border-radius: 1px;
     box-shadow: 0 0 2px rgba(192, 225, 255, 0.6),
       0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px #00b9f133,
       inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    font-weight: bolder;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .aq {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-style: italic;
+      padding-left: 0.5rem;
+
+      img {
+        width: 40px;
+        height: 40px;
+        margin-right: 5px;
+      }
+    }
+
+    .aqMetric {
+      margin: 1rem;
+      border: 2px;
+      box-shadow: 0 0 2px rgba(192, 225, 255, 0.6),
+        0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px #00b9f133,
+        inset 0 0 2px rgba(212, 127, 0, 0.1),
+        inset 0 0 2px rgba(0, 149, 255, 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-weight: bolder;
+    }
   }
 }
 
