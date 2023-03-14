@@ -135,7 +135,7 @@ body {
 }
 
 header {
-  height: 7vh;
+  height: 8vh;
   padding: 0.5rem;
   display: flex;
   justify-content: center;
@@ -155,6 +155,14 @@ header {
 
 .sticky > .content {
   padding-top: 7vh;
+}
+
+.locationWeather {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-style: italic;
+  margin: 1rem;
 }
 
 .searchBar {
@@ -226,6 +234,10 @@ header {
 
 .content {
   display: flex;
+  align-items: center;
+  background: #eff8ff;
+  box-shadow: 50px 50px 65px 0px #fff9e1 inset;
+  height: 92vh;
 }
 
 .lds-ripple {
@@ -280,12 +292,10 @@ header {
 }
 .weather {
   padding: 1rem;
-  background: #eff8ff;
   color: black;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
-  box-shadow: 50px 50px 65px 0px #fff9e1 inset;
 }
 
 .title {
@@ -295,18 +305,17 @@ header {
 }
 
 .currentWeather {
-  line-height: 1.25;
-  padding: 2rem;
-  margin-right: 1rem;
+  padding: 1rem;
+  margin: 1rem;
   background-color: rgba(255, 255, 255, 0.87);
   border-radius: 1px;
   box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
-  margin-bottom: 1rem;
   flex-wrap: wrap;
 }
 .currentWeather .weatherMetrics {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
 }
 .currentWeather .weatherMetrics .temperature {
@@ -314,6 +323,7 @@ header {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-left: 1rem;
 }
 .currentWeather .weatherMetrics .temperature .degrees {
   font-size: 2.5rem;
@@ -330,9 +340,8 @@ header {
   margin-right: 1rem;
 }
 .currentWeather .metrics {
-  line-height: 1.25;
-  padding: 2rem;
-  margin-right: 1rem;
+  padding: 1rem;
+  margin: 1rem;
   background-color: rgba(255, 255, 255, 0.87);
   border-radius: 1px;
   box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
@@ -340,8 +349,7 @@ header {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  padding: 1rem;
-  margin: 0 1rem 1rem 0;
+  padding-bottom: 1rem;
 }
 .currentWeather .metricTitle {
   font-weight: bold;
@@ -349,18 +357,17 @@ header {
   text-transform: uppercase;
 }
 .currentWeather .metricsIcon {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
 }
 .currentWeather .weatherMetric {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
 .miscellaneous {
-  line-height: 1.25;
-  padding: 2rem;
-  margin-right: 1rem;
+  padding: 1rem;
+  margin: 1rem;
   background-color: rgba(255, 255, 255, 0.87);
   border-radius: 1px;
   box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
@@ -408,9 +415,8 @@ header {
 }
 
 .environmental {
-  line-height: 1.25;
-  padding: 2rem;
-  margin-right: 1rem;
+  padding: 1rem;
+  margin: 1rem;
   background-color: rgba(255, 255, 255, 0.87);
   border-radius: 1px;
   box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
@@ -479,26 +485,24 @@ header {
 }
 
 .mapWrapper {
-  line-height: 1.25;
-  padding: 2rem;
-  margin-right: 1rem;
+  padding: 1rem;
+  margin: 1rem;
   background-color: rgba(255, 255, 255, 0.87);
   border-radius: 1px;
   box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
-  height: 400px;
-  width: 400px;
+  height: 220px;
+  width: 200px;
 }
 
 #map {
-  min-height: 350px;
-  min-width: 350px;
-  border-radius: 5px;
+  height: 180px;
+  width: 200px;
+  border-radius: 2px;
 }
 
 .forecast {
-  line-height: 1.25;
-  padding: 2rem;
-  margin-right: 1rem;
+  padding: 1rem;
+  margin: 1rem;
   background-color: rgba(255, 255, 255, 0.87);
   border-radius: 1px;
   box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
@@ -510,9 +514,8 @@ header {
   flex-wrap: wrap;
 }
 .forecast .forecastDay {
-  line-height: 1.25;
-  padding: 2rem;
-  margin-right: 1rem;
+  padding: 1rem;
+  margin: 1rem;
   background-color: rgba(255, 255, 255, 0.87);
   border-radius: 1px;
   box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);
@@ -522,6 +525,7 @@ header {
   flex-direction: column;
   padding: 1rem;
   margin: 0 1rem 1rem 0;
+  width: 100px;
 }
 .forecast .forecastDate {
   font-weight: bolder;
@@ -559,9 +563,8 @@ header {
 }
 
 .countryInfo {
-  line-height: 1.25;
-  padding: 2rem;
-  margin-right: 1rem;
+  padding: 1rem;
+  margin: 1rem;
   background-color: rgba(255, 255, 255, 0.87);
   border-radius: 1px;
   box-shadow: 0 0 2px rgba(192, 225, 255, 0.6), 0 0 2px rgba(115, 185, 255, 0.4), 0 0 2px rgba(0, 185, 241, 0.2), inset 0 0 2px rgba(212, 127, 0, 0.1), inset 0 0 2px rgba(0, 149, 255, 0.2);

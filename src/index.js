@@ -3,7 +3,7 @@ import styles from "../styles/style.css";
 import { showWeather } from "./currentWeather";
 import { showEnvironmental } from "./environmental";
 import { showForecast } from "./forecast";
-import { showMap } from "./map";
+// import { showMap } from "./map";
 import { showMiscellaneous } from "./miscellaneous";
 
 const key = "629531abca22eb8266b74fa0de195aec";
@@ -12,6 +12,7 @@ const searchButton = document.querySelector(".search");
 const searchInput = document.querySelector(".searchInput");
 const loader = document.querySelector(".lds-ripple");
 const content = document.querySelector(".content");
+const locationWeather = document.querySelector(".locationWeather");
 
 let cityName = "Denia, ES";
 
@@ -87,12 +88,15 @@ async function fetchData() {
 function showData() {
   fetchData()
     .then(({ data, location }) => {
-      console.log(data);
-      showMap(location);
+      // showMap(location);
       showWeather(data);
       showForecast(data);
       showMiscellaneous(data);
       showEnvironmental(data);
+
+      locationWeather.innerHTML = `📌 ${data[0].name}, ${
+        data[0].sys.country
+      } | ${Math.round(data[0].main.temp)}°c`;
     })
     .catch((error) => {
       console.error(error);
@@ -106,8 +110,7 @@ setInterval(() => {
 }, 500000);
 
 function handleSearch() {
-  const searchInput = document.querySelector(".searchInput");
-  cityName = searchInput.value;
+  cityName = searchInput.value.trim();
   searchInput.value = "";
 }
 
