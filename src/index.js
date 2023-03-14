@@ -56,7 +56,7 @@ async function fetchData() {
     data.push(forecast);
 
     const response4 =
-      await fetch(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${key}
+      await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${key}
     `);
     const airPollution = await response4.json();
     data.push(airPollution);
